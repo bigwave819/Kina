@@ -9,9 +9,11 @@ const Hero = () => {
 
     const getVideosSrc = (index) => `video/hero-${index}.mp4`
 
-    const totalVideos = 4;
+    const totalVideos = 3;
 
     const nextVideoRef = useRef(null);
+
+    const upComingVideoIndex = ( currentIndex % totalVideos ) + 1;
 
     const handleVideoLoad = () => {
         setLoadedVideos((prev) => prev +1)
@@ -19,7 +21,7 @@ const Hero = () => {
 
     const handleMinVidClick = () => {
         setHasClicked(true)
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        setCurrentIndex(upComingVideoIndex);
     }
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
@@ -29,7 +31,7 @@ const Hero = () => {
                     <div onClick={handleMinVidClick} className='origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100'>
                         <video
                         ref={nextVideoRef}
-                        src={getVideosSrc(currentIndex + 1) }
+                        src={getVideosSrc(upComingVideoIndex) }
                         loop
                         muted
                         id = "current-video"
@@ -38,6 +40,29 @@ const Hero = () => {
                         />
                     </div>
                 </div>
+                <video
+                ref={nextVideoRef}
+                src={getVideosSrc(currentIndex)}
+                loop
+                muted
+                id='next-video'
+                className='absolute-center invisible absolute z-20 size-64 object-cover object-center'
+                onLoadedData={handleVideoLoad}
+                />
+                <video 
+                src={getVideosSrc(currentIndex -1 ? 1 : currentIndex)}
+                autoPlay
+                loop
+                muted
+                className='absolute left-0 top-0 size-full object-cover object-center'
+                onLoadedData={handleVideoLoad}
+                />
+            </div>
+            <h1 className='special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75'>
+                K<b>i</b>na
+            </h1>
+            <div className="absolute top-0 left-0 z-40 size-full">
+                <div className="mt-24 px-5 sm:px-10"></div>
             </div>
         </div>
     </div>

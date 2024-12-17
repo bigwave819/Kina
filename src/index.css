@@ -68,9 +68,9 @@ body {
     font-feature-settings: "ss01" on;
   }
 
-  /* .hero-heading {
+  .hero-heading {
     @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
-  } */
+  }
 
   .about-subtext {
     @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
@@ -169,7 +169,7 @@ body {
 
 /* From Uiverse.io by G4b413l */
 /* https://uiverse.io/G4b413l/tidy-walrus-92 */
-/* .three-body {
+.three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
   --uib-color: #5d3fd3;
@@ -270,4 +270,4 @@ body {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
   }
-} */
+}
